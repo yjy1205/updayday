@@ -36,6 +36,7 @@ int main()
 int 定义整数 ；double 定义浮点数，精度高（或float 用于内存敏感的时候 其储存位数较小）
 double：双精度浮点数
 float：单精度浮点数
+
 改为double后 用scanf输入时要改成
 scanf("%lf",&price)
 
