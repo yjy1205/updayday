@@ -5,7 +5,7 @@ int main()
     int price = 0;
     int change = 0;  #传统的C语言只接受开头定义变量
     printf("请输入金额:")；
-    scanf=("%d",&price);
+    scanf("%d",&price);
     change=100-price;  #int change=100-price 在现在亦可定义变量
     printf("找您%d元",change);
     return 0;
@@ -16,5 +16,19 @@ a=b意味着赋值 绝不与b=a等价  =：赋值运算符
 
 变量一定要初始化
 
+scanf是输入函数 formative（格式化输入） 这里的&必须要加使得函数能读取变量
 
+定义一个常量：const int amount 100
+#include <stdio.h>
+int main()
+{
+    const int amount=100;
+    int price = 0;
+
+    printf("请输入金额:");
+    scanf("%d",&price);
+    int change=amount-price; 
+    printf("找您%d元",change);
+    return 0;
+}
 
