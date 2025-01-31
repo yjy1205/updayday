@@ -22,7 +22,7 @@ scanf是输入函数 formative（格式化输入） 这里的&必须要加使得
 #include <stdio.h>
 int main()
 {
-    const int amount=100;
+    const int amount=100; #const为修饰符，意思是不变的
     int price = 0;
 
     printf("请输入金额:");
@@ -31,4 +31,29 @@ int main()
     printf("找您%d元",change);
     return 0;
 }
+
+%d代表整数待替代 %f代表浮点数待替代
+int 定义整数 ；double 定义浮点数，精度高（或float 用于内存敏感的时候 其储存位数较小）
+double：双精度浮点数
+float：单精度浮点数
+改为double后 用scanf输入时要改成
+scanf("%lf",&price)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
