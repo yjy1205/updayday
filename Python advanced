@@ -16,6 +16,8 @@
 双向链表：节点包含前驱和后继指针
 循环链表：尾节点指针指向头节点形成环
 
+
+
 代码：
 class ListNode:
     def __init__(self, val=0, next=None):
@@ -81,6 +83,40 @@ class LinkedList:
 
 
 
+
+
+
+# 构建链表的函数
+def build_linked_list(values):
+    if not values:
+        return None
+    head = ListNode(values[0])
+    current = head
+    for val in values[1:]:
+        current.next = ListNode(val)
+        current = current.next
+    return head  #链表像一条锁链：头节点是第一个环，每个环都链接下一个环； 返回头节点相当于抓住锁链的起点：虽然只返回一个节点，但通过不断访问 next 可以遍历整个链条；操作本质是修改指针：构建过程中不断把新节点挂载到当前节点的 next 上
+
+######return head 返回的是访问链表的入口点； print_list 是解码器，将指针链接转换为可视化的字符串
+
+# 打印链表的函数 
+def print_list(head):#只是把上面构造的链表打印出来
+    curr = head
+    while curr:
+        print(curr.val, end='->')
+        curr = curr.next
+    print("None")
+
+if __name__ == "__main__":
+    # 输入示例，这里可以根据需要修改输入的值
+    input_values = [100, 2, 3, 4, 5]
+
+    # 构建链表
+    head = build_linked_list(input_values)
+
+    # 打印链表
+    print("构建的链表为:")
+    print_list(head)
 
 
 
