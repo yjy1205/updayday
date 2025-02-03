@@ -16,7 +16,68 @@
 双向链表：节点包含前驱和后继指针
 循环链表：尾节点指针指向头节点形成环
 
+代码：
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val  # 当前车厢装什么货物
+        self.next = next # 连接下一个车厢的钩子
 
+# 创建三个车厢（节点）
+node1 = ListNode(1)  # 🚂 [1] -> None
+node2 = ListNode(2)  # 🚂 [2] -> None 
+node3 = ListNode(3)  # 🚂 [3] -> None
+
+# 手动连接成链表
+node1.next = node2   # [1] -> [2]
+node2.next = node3   # [2] -> [3]
+# 最终链表：1 -> 2 -> 3 -> None
+
+
+class LinkedList:
+    def __init__(self):
+        self.head = None  # 初始为空火车
+    
+    def append(self, val):
+        """在尾部添加节点"""
+        new_node = ListNode(val)
+        # 情况1：空链表
+        if not self.head:  
+            self.head = new_node
+            return
+        
+        # 情况2：非空链表，找到最后一个节点
+        curr = self.head
+        while curr.next:  # 只要还有下一个车厢
+            curr = curr.next
+        curr.next = new_node  # 挂接新车厢
+    
+    def prepend(self, val):
+        """在头部插入节点"""
+        new_node = ListNode(val)
+        new_node.next = self.head  # 新车厢连接原车头
+        self.head = new_node       # 新车成为车头
+    
+    def delete(self, val):      #在链表中删除一个节点，本质上是修改该节点的前一个节点（前驱节点）的指针，使其指向要删除节点的下一个节点，从而将该节点从链表中 “绕过”，达到删除的目的
+        """删除第一个遇到的指定值节点"""
+        # 处理空链表
+        if not self.head:
+            return
+        
+        # 处理头节点就是要删除的节点
+        if self.head.val == val:
+            self.head = self.head.next
+            return
+        
+        # 寻找目标节点的前驱
+        prev = None
+        curr = self.head
+        while curr and curr.val != val:
+            prev = curr
+            curr = curr.next
+        
+        # 找到目标且不是尾节点
+        if curr:
+            prev.next = curr.next
 
 
 
