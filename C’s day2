@@ -1,0 +1,28 @@
+判断
+
+
+#include <stdio.h>
+
+int main()
+
+{
+    int hour1, minute1;
+    int hour2, minute2;
+
+    printf("请输入第一个时间点的小时和分钟（用空格分隔）：");
+    scanf("%d %d", &hour1, &minute1);
+    printf("请输入第二个时间点的小时和分钟（用空格分隔）：");
+    scanf("%d %d", &hour2, &minute2);
+
+    int ih = hour2 - hour1;
+    int im = minute2 - minute1;
+
+    if (im < 0) {
+        im = 60 + im;
+        ih--;//约等于ih=ih-1  // /*ih-- 是后自减运算符，而 ih = ih - 1 是一个赋值表达式*/
+    }
+
+    printf("时间差是%d小时%d分\n", ih, im);
+
+    return 0;
+}
