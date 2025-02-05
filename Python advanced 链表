@@ -128,6 +128,56 @@ if __name__ == "__main__":
 新手必做题目顺序：
 
 206.反转链表（基础）
+class Listnode:
+    def __init__(self, val=0, next=None):
+        self.val=val
+        self.next=next#这里的val和next是有意义的？不同于其他的变量 它是被提前设计好的去构造链表的？所以之后只要加.next就可以将一串数字连在一起?
+    
+    def build_linked_list(lst):
+        if not lst:
+            return None
+        
+        head=Listnode(lst[0])#解释这里直接用类名 括号里有列表 是什么意思
+        current=head
+
+        for val in lst[1:]:
+            current.next=Listnode(val)
+            current=current.next
+
+        return head#数字如何就被连成串的？就通过.next?
+    
+    def reverse_list(head):
+        if not head or not head.next:
+            return head
+        
+        new_head=Listnode.reverse_list(head.next)#这里一直在递归 那第一个执行下方的数是5对吧 5.next.next=5  5.next=None 之后呢？想不到怎么继续了
+
+        head.next.next=head
+        head.next=None
+
+        return new_head
+    
+    def print_linked_list(head):
+        current=head
+        while current:
+            print(f'{current.val}->',end='')
+            current=current.next
+        print("None")
+
+input_list = [1, 2, 3, 4, 5]
+original_head = Listnode.build_linked_list(input_list)
+print("原链表结构：")
+Listnode.print_linked_list(original_head) 
+
+reversed_head = Listnode.reverse_list(original_head)
+
+print("\n反转后链表结构：")
+
+
+
+
+
+
 
 21.合并两个有序链表（基础操作）
 
