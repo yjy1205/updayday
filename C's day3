@@ -1,0 +1,23 @@
+switch-case分支语句
+
+
+#include <stdio.h>
+
+int main()
+
+{
+    int type;
+
+    scanf("%d",&type);
+
+    switch(type){/*这里只能是整数型的数*/
+        case 1:
+            printf("nihao");
+        case 2:
+            printf("zaijian");
+        default:
+            printf("???");
+
+    }
+    return 0;
+}
