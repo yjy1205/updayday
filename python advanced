@@ -1,0 +1,70 @@
+
+例：
+给定一个 n×n 的矩阵，其中 n≤50。按蛇形打印矩阵的元素。
+
+
+输入格式:
+第一行整数 n，接下来 n 行，每行 n 个数。
+
+输出格式:
+一行，蛇形打印的结果，每一个整数空格分隔。
+
+n = int(input())
+matrix = [list(map(int, input().split())) for _ in range(n)]#列表表达式 需要熟练运用
+print(matrix)
+result = []
+for i in range(n):
+    if i % 2 == 0:
+        result += matrix[i]#******列表套列表[[1,2,3][4,5,6]] 新建列表用+=逐个加大列表中小列表元素，最后生成的是一个大列表[1,2,3,4,5,6]
+    else:
+        result += matrix[i][::-1]
+print(' '.join(map(str,result))+" ")#******map（a，b）方法：
+
+
+map（func, iterable, ...）
+a 必须是一个可调用对象，通常是函数。这个函数可以是 Python 内置函数（如 str、int、float 等），也可以是用户自定义的函数，还可以是 lambda 表达式。
+该函数会被应用到 b（iterable）中的每个元素上。函数的参数数量取决于传递给 map() 的可迭代对象的数量，例如，如果只传递了一个可迭代对象，那么这个函数应该接受一个参数；如果传递了两个可迭代对象，那么这个函数应该接受两个参数，以此类推。
+
+
+1. 使用内置函数和单个可迭代对象
+# 将列表中的每个元素转换为字符串
+numbers = [1, 2, 3, 4]
+result = map(str, numbers)
+print(list(result))  # 输出: ['1', '2', '3', '4']
+
+
+2. 使用自定义函数和单个可迭代对象
+def square(x):
+    return x ** 2
+
+numbers = [1, 2, 3, 4]
+result = map(square, numbers)
+print(list(result))  # 输出: [1, 4, 9, 16]
+
+
+3. 使用 lambda 表达式和单个可迭代对象
+numbers = [1, 2, 3, 4]
+result = map(lambda x: x * 2, numbers)
+print(list(result))  # 输出: [2, 4, 6, 8]
+
+
+4. 使用自定义函数和多个可迭代对象
+def add(x, y):
+    return x + y
+
+list1 = [1, 2, 3]
+list2 = [4, 5, 6]
+result = map(add, list1, list2)
+print(list(result))  # 输出: [5, 7, 9]
+
+
+
+
+
+
+
+
+
+
+
+
