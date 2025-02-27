@@ -1,0 +1,59 @@
+def get_user_input(prompt):
+    try:
+        return int(input(prompt))
+    except ValueError:
+        print("输入无效，请输入一个整数。")
+        return None
+
+# 定义提示信息
+n = "请输入一个整数: "
+
+# 调用函数
+result = get_user_input(n)
+if result is not None:
+    print(f"你输入的整数是: {result}")
+
+
+return int(input(prompt)) 是可行的
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+m,n=map(int,input().split())
+lst=[]
+for _ in range(m):
+    nums=list(map(int,input().split()))
+    lst.extend(nums)##extend是在此基础上延长列表*****
+
+from collections import Counter###调用计数器{3：2 2：1}  ：前面是出现的元素 ：后面是出现的次数
+
+count=Counter(lst)
+
+unique=[num for num ,fraq in count.items() if fraq==1] #count.items() 返回字典元素加索引（key value）  Counter是dict的子类
+
+if unique:
+    print(' '.join(map(str,unique))+" ")
+else:
+    print("0")
+
+
