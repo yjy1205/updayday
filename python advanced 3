@@ -1,0 +1,28 @@
+利用元组进行排序
+
+
+n = int(input())
+nums = list(map(int, input().split()))
+
+
+def count_closed_figures(num):
+    closed_count = 0
+    num_str = str(num)
+    for digit in num_str:
+        if digit in '0469':
+            closed_count += 1
+        elif digit == '8':
+            closed_count += 2
+    return closed_count
+
+# 自定义排序规则
+def custom_sort_key(num):
+    return (count_closed_figures(num), num)#Python 在比较元组时，会先比较元组的第一个元素，如果第一个元素相等，再比较第二个元素，以此类推。
+#所以在这个元组中，先按照封闭图形的个数进行比较，如果封闭图形个数相同，再按照数字本身的大小进行比较，这就正好符合了蓝桥王国的数字排序规则。
+
+# 按照自定义规则排序
+sorted_nums = sorted(nums, key=custom_sort_key)#通过 key 参数指定了自定义的排序键函数 custom_sort_key。
+#sorted 函数在排序过程中，会对 nums 列表中的每个元素调用 custom_sort_key 函数，得到对应的排序键，然后根据这些排序键来确定元素的顺序。
+
+# 输出排序后的结果
+print(" ".join(map(str, sorted_nums)))
